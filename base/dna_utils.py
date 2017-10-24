@@ -37,7 +37,7 @@ class DnaUtil(object):
         characters
         """
         accepted_chars = set(self.DNA_ALPHABET.keys())
-        if not set(array_string).issubset(accepted_chars):
+        if not set(self.sequence).issubset(accepted_chars):
             raise ValueError(
                 "expect IUPAC non-ambiguous DNA characters in input"
                 )
