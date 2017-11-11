@@ -10,6 +10,7 @@ DNA_ALPHABET = {
     'T': 'A'
 }
 
+
 class DnaUtil(object):
     """
     Holds DNA sequence string data enables simple sequence methods.
@@ -31,6 +32,8 @@ class DnaUtil(object):
         self.sequence = sequence
         self.char_check()
 
+    def __str__(self):
+        return "DnaUtil object with DNA sequence: '{}'".format(self.sequence)
 
     def char_check(self):
         """check that current stored sequence contains only accepted DNA
