@@ -42,7 +42,7 @@ class DnaUtil(object):
         accepted_chars = set(self.DNA_ALPHABET.keys())
         if not set(self.sequence).issubset(accepted_chars):
             raise ValueError(
-                "expect IUPAC non-ambiguous DNA characters in input"
+                "IUPAC non-ambiguous DNA characters required"
                 )
 
     def reverse_complement(self):
