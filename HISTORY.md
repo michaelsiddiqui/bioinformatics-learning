@@ -2,10 +2,12 @@
 
 ## dev branch (current)
 
+## PR listing
+
+### PR #4 Readme history add (2017-11-12)
+
 * Add 'contribution tracking' subsection to README.md
 * Add HISTORY.md to track past contributions
-
-## PR listing
 
 ### PR #3 Dna utils tests (2017-11-12)
 
