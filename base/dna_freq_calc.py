@@ -30,6 +30,7 @@ class DnaFreqCalc(DnaUtil):
         """
         Initial frequent_kmers methods
         """
+        k = int(k)
         diff_length = len(self.sequence) - k
         kmer_list = []
         for i in range(diff_length + 1):
@@ -45,10 +46,10 @@ class DnaFreqCalc(DnaUtil):
         use most_common() method and then retun all keys with
         values equal to the value of the most most_common element
         """
-        kmer_frequency = self.frequent_kmers(k)
-        most_freq = kmer_frequency.most_common(1)
-        high_count = most_freq[1]
+        kmer_freq = self.frequent_kmers(k)
+        most_freq = kmer_freq.most_common(1)
+        high_count = most_freq[0][1]
         list_most_frequent_kmers = [
-            key for key, val in kmer_frequency.iteritems if val == high_count
+            key for key, val in kmer_freq.iteritems() if val == high_count
         ]
         return list_most_frequent_kmers
