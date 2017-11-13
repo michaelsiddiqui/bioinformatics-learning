@@ -21,8 +21,11 @@ from base.tests.fixtures import FIXTURE_PATH
 
 FIXTURE1_FNAME = 'SamplePatternCount.txt'
 FIXTURE2_FNAME = 'empty_file.txt'
+FIXTURE3_FNAME = 'SampleFrequentKmers.txt'
 FIXTURE1_FPATH = os.path.join(FIXTURE_PATH, FIXTURE1_FNAME)
 FIXTURE2_FPATH = os.path.join(FIXTURE_PATH, FIXTURE2_FNAME)
+FIXTURE3_FPATH = os.path.join(FIXTURE_PATH, FIXTURE3_FNAME)
+
 
 class TestFileUtilsFromCourseExamples(unittest.TestCase):
     """
@@ -54,3 +57,15 @@ class TestFileUtilsFromCourseExamples(unittest.TestCase):
         actual_outputs = file_util_obj.outputs
         self.assertEqual(actual_inputs, actual_outputs)
         self.assertEqual(actual_outputs, [])
+
+    def test_input_file_with_space_delimited_content(self):
+        """
+        Test behavior when a file has space delimited strings on one line
+        """
+        expected_inputs = ['ACGTTGCATGTCGCATGATGCATGAGAGCT', '4']
+        expected_outputs = ['CATG', 'GCAT']
+        file_util_obj = FileUtil(FIXTURE3_FPATH)
+        actual_inputs = file_util_obj.inputs
+        actual_outputs = file_util_obj.outputs
+        self.assertEqual(expected_inputs, actual_inputs)
+        self.assertEqual(expected_outputs, actual_outputs)
