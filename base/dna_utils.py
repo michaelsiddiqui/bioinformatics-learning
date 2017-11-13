@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-dna_utils module to hold a simple utility class
+dna_utils module to hold a simple utility class, DnaUtil
 """
 
 
