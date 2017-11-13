@@ -6,6 +6,7 @@ file_utils module to hold simple bioinformatics course text file parsing class
 INPUT_STRING = 'Input'
 OUTPUT_STRING = 'Output'
 
+
 class FileUtil(object):
     """
     Holds I/O values parsed from course text files for example problems
@@ -43,11 +44,11 @@ class FileUtil(object):
         raw_args = [s for i in raw_text.splitlines() for s in i.split(' ')]
         try:
             input_index = raw_args.index(INPUT_STRING)
-        except:
+        except ValueError:
             input_index = -1
         try:
             output_index = raw_args.index(OUTPUT_STRING)
-        except:
+        except ValueError:
             output_index = len(raw_args)
         self.inputs = raw_args[input_index+1:output_index]
         self.outputs = raw_args[output_index+1:]
