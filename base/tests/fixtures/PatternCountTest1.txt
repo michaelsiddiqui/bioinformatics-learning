@@ -1,0 +1,5 @@
+Input
+ACGTACGTACGT
+CG
+Output
+3
