@@ -46,13 +46,13 @@ class TestDnaFreqCalc(unittest.TestCase):
         Test the pattern_count method using the SamplePatternCount.txt inputs
 
         From prompt: The sample dataset is not actually run on your code.
-        Notice that “GCG” occurs twice in Text: once at the beginning (GCG​CG)
-        and once at the end (GCGCG​). A common mistake for this problem is
+        Notice that “GCG” occurs twice in Text: once at the beginning (GCGCG)
+        and once at the end (GCGCG). A common mistake for this problem is
         incorrectly handling overlaps and not counting the second of these two
         occurrences (because it begins at the end of the previous occurrence).
         The sample dataset checks for the following things:
-        * Off­by­one at the beginning of Text (result would be 1)
-        * Off­by­one at the end of Text (result would be 1)
+        * Off-by-one at the beginning of Text (result would be 1)
+        * Off-by-one at the end of Text (result would be 1)
         * Not counting overlaps (result would be 1)
         """
         file_util_obj = FileUtil(FIXTURE1_FPATH)
@@ -82,8 +82,8 @@ class TestDnaFreqCalc(unittest.TestCase):
         Saved in PatternCountTest1.txt
         This dataset just checks if you’re correctly counting.
         It is the “easiest” test. Notice that all occurrences of CG in Text
-        (ACG​TACG​TACG​T) are away from the very edges (so your code won’t fail
-        on off­by­one errors at the beginning or at the end of Text) and that
+        (ACGTACGTACGT) are away from the very edges (so your code won’t fail
+        on off-by-one errors at the beginning or at the end of Text) and that
         none of the occurrences of Pattern overlap (so your code won’t fail if
         you fail to account for overlaps).
         """
@@ -106,7 +106,7 @@ class TestDnaFreqCalc(unittest.TestCase):
         Note that there are no overlapping occurrences of Pattern (i.e. AAAA),
         and there is no occurrence of Pattern at the very end of Text,
         so assuming your code passed Test Dataset 1, this test would only check
-        for off­by­one errors at the beginning of Text.
+        for off-by-one errors at the beginning of Text.
         """
         fname = PATTERN_COUNT_TEST_FNAMES[1]
         fpath = os.path.join(FIXTURE_PATH, fname)
@@ -127,7 +127,7 @@ class TestDnaFreqCalc(unittest.TestCase):
         Note that there are no overlapping occurrences of Pattern (i.e. AAAA),
         and there is no occurrence of Pattern at the very beginning of Text,
         so assuming your code passed Test Dataset 2, this test would only check
-        for off­by­one errors at the end of Text.
+        for off-by-one errors at the end of Text.
         """
         fname = PATTERN_COUNT_TEST_FNAMES[2]
         fpath = os.path.join(FIXTURE_PATH, fname)
@@ -194,30 +194,75 @@ class TestDnaFreqCalc(unittest.TestCase):
         you will get the following “most frequent” kmers in addition to TGG:
         ACT CAC CCA CTT GGT
         """
-        fname = PATTERN_COUNT_TEST_FNAMES[0]
+        fname = MOST_FREQUENT_KMERS_TEST_FNAMES[0]
         fpath = os.path.join(FIXTURE_PATH, fname)
         file_util_obj = FileUtil(fpath)
         inputs = file_util_obj.inputs
-        expected = int(file_util_obj.outputs[0])
+        expected = file_util_obj.outputs
         sequence_obj = DnaFreqCalc(inputs[0])
-        actual = sequence_obj.pattern_count(inputs[1])
+        actual = sequence_obj.most_frequent_kmers(inputs[1])
         self.assertEqual(expected, actual)
 
     def test_most_frequent_kmer_test_two(self):
         """
-        Test the most_frequent_kmer method using the TEST DATASET 1 fixture
+        Test the most_frequent_kmer method using the TEST DATASET 2 fixture
 
-        Saved in FreqKmersTest1.txt
+        Saved in FreqKmersTest2.txt
         This dataset just checks if you’re counting the first kmer in Text
         (TGG in this example). If you do not count the first kmer (TGG),
         you will get the following “most frequent” kmers in addition to TGG:
         ACT CAC CCA CTT GGT
         """
-        fname = PATTERN_COUNT_TEST_FNAMES[1]
+        fname = MOST_FREQUENT_KMERS_TEST_FNAMES[1]
         fpath = os.path.join(FIXTURE_PATH, fname)
         file_util_obj = FileUtil(fpath)
         inputs = file_util_obj.inputs
-        expected = int(file_util_obj.outputs[0])
+        expected = file_util_obj.outputs
         sequence_obj = DnaFreqCalc(inputs[0])
-        actual = sequence_obj.pattern_count(inputs[1])
+        actual = sequence_obj.most_frequent_kmers(inputs[1])
+        self.assertEqual(expected, actual)
+
+    def test_most_frequent_kmer_test_three(self):
+        """
+        Test the most_frequent_kmer method using the TEST DATASET 3 fixture
+
+        Saved in FreqKmersTest3.txt
+        This dataset checks if your code correctly handles cases where there
+        are overlapping occurrences of Pattern throughout Text. For example,
+        AACAACAA contains two occurrences of AACAA (AACAACAA and AACAACAA),
+        so if your code counts AACAACAA as one occurrence of AACAA,
+        your code will fail on this test case.
+        """
+        fname = MOST_FREQUENT_KMERS_TEST_FNAMES[2]
+        fpath = os.path.join(FIXTURE_PATH, fname)
+        file_util_obj = FileUtil(fpath)
+        inputs = file_util_obj.inputs
+        expected = file_util_obj.outputs
+        sequence_obj = DnaFreqCalc(inputs[0])
+        actual = sequence_obj.most_frequent_kmers(inputs[1])
+        self.assertEqual(expected, actual)
+
+    def test_most_frequent_kmer_test_four(self):
+        """
+        Test the most_frequent_kmer method using the TEST DATASET 4 fixture
+
+        Saved in FreqKmersTest4.txt
+        This test dataset checks if your code correctly handles ties
+        (i.e. your code actually outputs ALL “most frequent” kmers, and not
+        just a single “most frequent” kmer). For example, in the string
+        “ATATA”, there are two “most frequent” kmers: “AT” and “TA”. “AT”
+        occurs twice (ATATA), and “TA” occurs twice (ATATA), so both of these
+        should be outputted (separated by a space character).
+        """
+        fname = MOST_FREQUENT_KMERS_TEST_FNAMES[3]
+        fpath = os.path.join(FIXTURE_PATH, fname)
+        file_util_obj = FileUtil(fpath)
+        inputs = file_util_obj.inputs
+
+        # using set instead of lists because don't care about element order
+        expected = set(file_util_obj.outputs)
+        sequence_obj = DnaFreqCalc(inputs[0])
+
+        # using set instead of lists because don't care about element order
+        actual = set(sequence_obj.most_frequent_kmers(inputs[1]))
         self.assertEqual(expected, actual)
