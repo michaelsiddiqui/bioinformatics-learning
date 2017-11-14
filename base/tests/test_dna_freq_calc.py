@@ -31,6 +31,10 @@ PATTERN_COUNT_TEST_FNAMES = [
     fname for fname in os.listdir(FIXTURE_PATH) if 'PatternCountTest' in fname
 ]
 PATTERN_COUNT_TEST_FNAMES.sort()
+MOST_FREQUENT_KMERS_TEST_FNAMES = [
+    fname for fname in os.listdir(FIXTURE_PATH) if 'FreqKmersTest' in fname
+]
+MOST_FREQUENT_KMERS_TEST_FNAMES.sort()
 
 
 class TestDnaFreqCalc(unittest.TestCase):
@@ -156,7 +160,7 @@ class TestDnaFreqCalc(unittest.TestCase):
 
     def test_most_frequent_kmer_sample(self):
         """
-        Test the pattern_count method using the SamplePatternCount.txt inputs
+        Test the most_frequent_kmer method using SampleFrequentKmers.txt
 
         From prompt: The sample dataset is not actually run on your code.
         """
@@ -169,7 +173,7 @@ class TestDnaFreqCalc(unittest.TestCase):
 
     def test_most_frequent_kmer_extra_dataset(self):
         """
-        Test the pattern_count method using the FrequentKmers.txt fixture
+        Test the most_frequent_kmer method using the FrequentKmers.txt fixture
 
         The course prompt called this the "Extra Dataset"
         """
@@ -178,4 +182,42 @@ class TestDnaFreqCalc(unittest.TestCase):
         expected = file_util_obj.outputs
         sequence_obj = DnaFreqCalc(inputs[0])
         actual = sequence_obj.most_frequent_kmers(inputs[1])
+        self.assertEqual(expected, actual)
+
+    def test_most_frequent_kmer_test_one(self):
+        """
+        Test the most_frequent_kmer method using the TEST DATASET 1 fixture
+
+        Saved in FreqKmersTest1.txt
+        This dataset just checks if you’re counting the first kmer in Text
+        (TGG in this example). If you do not count the first kmer (TGG),
+        you will get the following “most frequent” kmers in addition to TGG:
+        ACT CAC CCA CTT GGT
+        """
+        fname = PATTERN_COUNT_TEST_FNAMES[0]
+        fpath = os.path.join(FIXTURE_PATH, fname)
+        file_util_obj = FileUtil(fpath)
+        inputs = file_util_obj.inputs
+        expected = int(file_util_obj.outputs[0])
+        sequence_obj = DnaFreqCalc(inputs[0])
+        actual = sequence_obj.pattern_count(inputs[1])
+        self.assertEqual(expected, actual)
+
+    def test_most_frequent_kmer_test_two(self):
+        """
+        Test the most_frequent_kmer method using the TEST DATASET 1 fixture
+
+        Saved in FreqKmersTest1.txt
+        This dataset just checks if you’re counting the first kmer in Text
+        (TGG in this example). If you do not count the first kmer (TGG),
+        you will get the following “most frequent” kmers in addition to TGG:
+        ACT CAC CCA CTT GGT
+        """
+        fname = PATTERN_COUNT_TEST_FNAMES[1]
+        fpath = os.path.join(FIXTURE_PATH, fname)
+        file_util_obj = FileUtil(fpath)
+        inputs = file_util_obj.inputs
+        expected = int(file_util_obj.outputs[0])
+        sequence_obj = DnaFreqCalc(inputs[0])
+        actual = sequence_obj.pattern_count(inputs[1])
         self.assertEqual(expected, actual)
