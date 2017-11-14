@@ -1,0 +1,5 @@
+Input
+GGACTTACTGACGTACG
+ACT
+Output
+2
