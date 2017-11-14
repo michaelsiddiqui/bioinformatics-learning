@@ -2,6 +2,11 @@
 
 ## dev branch (current)
 
+* separate DnaFreqCalc class to new module
+* separate DnaFreqCalc tests to a new test module
+* add more test fixtures and methods for pattern_count
+* add test fixtures and methods for most_frequent_kmers
+
 ## PR listing
 
 ### PR #4 Readme history add (2017-11-12)
