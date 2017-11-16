@@ -13,6 +13,7 @@ import os
 import unittest
 
 from base.dna_utils import DnaUtil
+from base.file_utils import FileUtil
 from base.tests.fixtures import FIXTURE_PATH
 
 GOOD_DNA = 'ACGTACGT'
@@ -21,10 +22,12 @@ BAD_DNA = 'ACGBT2'
 TEST_FWD_SEQ = 'AATTGGCC'
 TEST_REV_COMP_SEQ = 'GGCCAATT'
 
-FIXTURE1_FNAME = 'SamplePatternCount.txt'
-FIXTURE2_FNAME = 'PatternCount.txt'
+FIXTURE1_FNAME = 'SampleReverseComplement.txt'
+FIXTURE2_FNAME = 'ReverseComplement.txt'
+FIXTURE3_FNAME = 'ReverseComplementTest1.txt'
 FIXTURE1_FPATH = os.path.join(FIXTURE_PATH, FIXTURE1_FNAME)
 FIXTURE2_FPATH = os.path.join(FIXTURE_PATH, FIXTURE2_FNAME)
+FIXTURE3_FPATH = os.path.join(FIXTURE_PATH, FIXTURE3_FNAME)
 
 
 class TestDnaUtilsMethods(unittest.TestCase):
@@ -68,4 +71,37 @@ class TestDnaUtilsMethods(unittest.TestCase):
         dna_util_obj = DnaUtil(TEST_FWD_SEQ)
         expected = TEST_REV_COMP_SEQ
         actual = dna_util_obj.reverse_complement()
+        self.assertEqual(expected, actual)
+
+    def test_reverse_complement_from_sample_dataset(self):
+        """
+        Test reverse_complement method with 'Sample' dataset
+        """
+        file_util_obj = FileUtil(FIXTURE1_FPATH)
+        inputs = file_util_obj.inputs
+        expected = file_util_obj.outputs[0]
+        sequence_obj = DnaUtil(inputs[0])
+        actual = sequence_obj.reverse_complement()
+        self.assertEqual(expected, actual)
+
+    def test_reverse_complement_from_extra_dataset(self):
+        """
+        Test reverse_complement method with 'Extra' dataset
+        """
+        file_util_obj = FileUtil(FIXTURE2_FPATH)
+        inputs = file_util_obj.inputs
+        expected = file_util_obj.outputs[0]
+        sequence_obj = DnaUtil(inputs[0])
+        actual = sequence_obj.reverse_complement()
+        self.assertEqual(expected, actual)
+
+    def test_reverse_complement_from_test_dataset_one(self):
+        """
+        Test reverse_complement method with 'Test' dataset
+        """
+        file_util_obj = FileUtil(FIXTURE3_FPATH)
+        inputs = file_util_obj.inputs
+        expected = file_util_obj.outputs[0]
+        sequence_obj = DnaUtil(inputs[0])
+        actual = sequence_obj.reverse_complement()
         self.assertEqual(expected, actual)
