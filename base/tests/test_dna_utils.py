@@ -122,7 +122,7 @@ class TestDnaUtilsMethods(unittest.TestCase):
         """
         file_util_obj = FileUtil(FIXTURE4_FPATH)
         inputs = file_util_obj.inputs
-        expected = file_util_obj.outputs[0]
+        expected = file_util_obj.outputs
         sequence_obj = DnaUtil(inputs[1])
         actual = sequence_obj.locate_pattern_in_sequence(inputs[0])
         self.assertEqual(expected, actual)
@@ -133,7 +133,7 @@ class TestDnaUtilsMethods(unittest.TestCase):
         """
         file_util_obj = FileUtil(FIXTURE5_FPATH)
         inputs = file_util_obj.inputs
-        expected = file_util_obj.outputs[0]
+        expected = file_util_obj.outputs
         sequence_obj = DnaUtil(inputs[1])
         actual = sequence_obj.locate_pattern_in_sequence(inputs[0])
         self.assertEqual(expected, actual)
@@ -144,7 +144,7 @@ class TestDnaUtilsMethods(unittest.TestCase):
         """
         file_util_obj = FileUtil(FIXTURE6_FPATH)
         inputs = file_util_obj.inputs
-        expected = file_util_obj.outputs[0]
+        expected = file_util_obj.outputs
         sequence_obj = DnaUtil(inputs[1])
         actual = sequence_obj.locate_pattern_in_sequence(inputs[0])
         self.assertEqual(expected, actual)
@@ -155,7 +155,7 @@ class TestDnaUtilsMethods(unittest.TestCase):
         """
         file_util_obj = FileUtil(FIXTURE7_FPATH)
         inputs = file_util_obj.inputs
-        expected = file_util_obj.outputs[0]
+        expected = file_util_obj.outputs
         sequence_obj = DnaUtil(inputs[1])
         actual = sequence_obj.locate_pattern_in_sequence(inputs[0])
         self.assertEqual(expected, actual)
@@ -166,7 +166,7 @@ class TestDnaUtilsMethods(unittest.TestCase):
         """
         file_util_obj = FileUtil(FIXTURE8_FPATH)
         inputs = file_util_obj.inputs
-        expected = file_util_obj.outputs[0]
+        expected = file_util_obj.outputs
         sequence_obj = DnaUtil(inputs[1])
         actual = sequence_obj.locate_pattern_in_sequence(inputs[0])
         self.assertEqual(expected, actual)
