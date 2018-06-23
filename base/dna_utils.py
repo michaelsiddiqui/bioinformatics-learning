@@ -55,3 +55,19 @@ class DnaUtil(object):
             self.DNA_ALPHABET[base] for base in reverse_dna
         ])
         return output
+
+    def locate_pattern_in_sequence(self, pattern):
+        """
+        Return list of indices where pattern is located in sequence
+
+        Using a O(N) brute force method of looping over the entire sequence
+        See section 1.3 from week one course prompts on Stepik
+        """
+        sequence_length = len(self.sequence)
+        pattern_obj = DnaUtil(pattern)
+        pattern_length = len(pattern_obj.sequence)
+        index_list = []
+        for i in range(sequence_length - pattern_length + 1):
+            if self.sequence[i: i + pattern_length] == pattern_obj.sequence:
+                index_list.append(i)
+        return index_list
