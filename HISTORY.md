@@ -4,6 +4,7 @@
 
 * add tests for DnaUtil reverse complement method
 * add initial DnaUtil locate pattern method
+* add tests for DnaUtil locate pattern method
 
 ## PR listing
 
