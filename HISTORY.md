@@ -2,11 +2,14 @@
 
 ## dev branch (current)
 
+
+## PR listing
+
+### PR #6 Week one update 1 (2018-06-23)
+
 * add tests for DnaUtil reverse complement method
 * add initial DnaUtil locate pattern method
 * add tests for DnaUtil locate pattern method
-
-## PR listing
 
 ### PR #5 Week one update 1 (2017-11-13)
 
