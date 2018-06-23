@@ -1,0 +1,45 @@
+............FFFFF..........
+======================================================================
+FAIL: Test locate_pattern method with 'Test' dataset four
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/siddiqui/Projects/git-repos/bioinformatics-learning/base/tests/test_dna_utils.py", line 172, in test_locate_pattern_from_dataset_four
+    self.assertEqual(expected, actual)
+AssertionError: '0' != [0, 2]
+
+======================================================================
+FAIL: Test locate_pattern method with 'Test' dataset one
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/siddiqui/Projects/git-repos/bioinformatics-learning/base/tests/test_dna_utils.py", line 139, in test_locate_pattern_from_dataset_one
+    self.assertEqual(expected, actual)
+AssertionError: '4' != [4]
+
+======================================================================
+FAIL: Test locate_pattern method with 'Test' dataset three
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/siddiqui/Projects/git-repos/bioinformatics-learning/base/tests/test_dna_utils.py", line 161, in test_locate_pattern_from_dataset_three
+    self.assertEqual(expected, actual)
+AssertionError: '88' != [88, 92, 98]
+
+======================================================================
+FAIL: Test locate_pattern method with 'Test' dataset two
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/siddiqui/Projects/git-repos/bioinformatics-learning/base/tests/test_dna_utils.py", line 150, in test_locate_pattern_from_dataset_two
+    self.assertEqual(expected, actual)
+AssertionError: '0' != [0, 46, 51, 74]
+
+======================================================================
+FAIL: Test locate_pattern method with 'Sample' dataset
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/siddiqui/Projects/git-repos/bioinformatics-learning/base/tests/test_dna_utils.py", line 128, in test_locate_pattern_from_sample_dataset
+    self.assertEqual(expected, actual)
+AssertionError: '1' != [1, 3, 9]
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.016s
+
+FAILED (failures=5)
