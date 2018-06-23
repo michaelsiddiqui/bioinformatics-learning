@@ -1,39 +1,5 @@
-............F.F............
-======================================================================
-FAIL: Test locate_pattern method with 'Test' dataset four
+...........................
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/siddiqui/Projects/git-repos/bioinformatics-learning/base/tests/test_dna_utils.py", line 172, in test_locate_pattern_from_dataset_four
-    self.assertEqual(expected, actual)
-AssertionError: Lists differ: [0, 2, 4] != [0, 2]
+Ran 27 tests in 0.017s
 
-First list contains 1 additional elements.
-First extra element 2:
-4
-
-- [0, 2, 4]
-?      ---
-
-+ [0, 2]
-
-======================================================================
-FAIL: Test locate_pattern method with 'Test' dataset three
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/siddiqui/Projects/git-repos/bioinformatics-learning/base/tests/test_dna_utils.py", line 161, in test_locate_pattern_from_dataset_three
-    self.assertEqual(expected, actual)
-AssertionError: Lists differ: [88, 92, 98, 132] != [88, 92, 98]
-
-First list contains 1 additional elements.
-First extra element 3:
-132
-
-- [88, 92, 98, 132]
-?            -----
-
-+ [88, 92, 98]
-
-----------------------------------------------------------------------
-Ran 27 tests in 0.018s
-
-FAILED (failures=2)
+OK

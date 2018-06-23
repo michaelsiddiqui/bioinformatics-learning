@@ -67,7 +67,7 @@ class DnaUtil(object):
         pattern_obj = DnaUtil(pattern)
         pattern_length = len(pattern_obj.sequence)
         index_list = []
-        for i in range(sequence_length - pattern_length):
+        for i in range(sequence_length - pattern_length + 1):
             if self.sequence[i: i + pattern_length] == pattern_obj.sequence:
                 index_list.append(i)
         return index_list
