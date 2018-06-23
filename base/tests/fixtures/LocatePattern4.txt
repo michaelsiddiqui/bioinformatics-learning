@@ -1,0 +1,5 @@
+Input
+ATA
+ATATATA
+Output
+0 2 4
